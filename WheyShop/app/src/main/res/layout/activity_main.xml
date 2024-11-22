@@ -3,91 +3,129 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/black2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="69dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="20dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    app:srcCompat="@drawable/location"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <Spinner
+                    android:id="@+id/locationSp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/bell" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:drawableStart="@drawable/search_icon"
+                    android:padding="8dp"
+                    android:hint="Search..."
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:drawablePadding="8dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:background="@drawable/light_black_bg"
+                     />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="50dp"
+                    android:background="@drawable/yellow_bg"
+                    android:layout_marginStart="8dp"
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/settings" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:background="@drawable/light_black_bg"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/basket_banner" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/intro" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="31sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:text="@string/intro_title" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="
-Welcome to the world of fitness and energy!
-Fuel your workouts with protein essentials and energy boosters.
-Achieve your goals with our perfect supplements!"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:layout_margin="16dp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/startBtn"
-            android:background="@drawable/yellow_bg"
-            style="@android:style/Widget.Button"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Get Started"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="21sp"/>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/intro_login"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/white"
-            android:text="@string/intro_signin" />
-
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
