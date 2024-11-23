@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "347133876765",
+    "project_id": "wheyshop-8b539",
+    "storage_bucket": "wheyshop-8b539.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347133876765:android:466cb3e9bb526a287684f4",
+        "android_client_info": {
+          "package_name": "truong.vx.wheyshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCPXRqul3-zkrqFil5sVzx2WzyN-UFAiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
