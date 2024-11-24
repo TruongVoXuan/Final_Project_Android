@@ -63,6 +63,13 @@ public class BestDeal implements Parcelable {
         dest.writeInt(categoryId);
         dest.writeInt(locationId);
     }
+    public boolean matchesCriteria(Double minPrice, Double maxPrice, Double minStar, Integer categoryId) {
+        if (minPrice != null && price < minPrice) return false;
+        if (maxPrice != null && price > maxPrice) return false;
+        if (minStar != null && star < minStar) return false;
+        if (categoryId != null && this.categoryId != categoryId) return false;
+        return true;
+    }
 
     // Getters and setters...
     public String getTitle() {
