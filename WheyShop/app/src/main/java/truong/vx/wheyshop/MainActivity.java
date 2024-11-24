@@ -403,5 +403,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void Btncart (View view){
+        Intent intent = new Intent(this , Cart.class);
+        startActivity(intent);
+    }
+
 
 }
