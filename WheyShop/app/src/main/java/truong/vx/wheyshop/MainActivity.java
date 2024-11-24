@@ -72,8 +72,50 @@ public class MainActivity extends AppCompatActivity {
         categoryList.add(new Category("Vitamin", R.drawable.cat5, 5));
 
         Intent intent = getIntent();
-        idCategory = intent.getIntExtra("idCategory", 1);
+        idCategory = intent.getIntExtra("idCategory", 0);
 
+        SeeFull.add(new BestDeal("Red Whey", R.drawable.whey1, "Good for practice", 80, 4.4, 1, 1, 1));
+        SeeFull.add(new BestDeal("Whey Pro", R.drawable.whey2, "Gain weight", 87, 3.5, 2, 1, 1));
+        SeeFull.add(new BestDeal("Whey Gainer", R.drawable.whey3, "Muscle gain", 79, 4, 3, 1, 1));
+        SeeFull.add(new BestDeal("Whey Isolate", R.drawable.whey4, "Pure protein for growth", 90, 4.6, 4, 1, 1));
+        SeeFull.add(new BestDeal("Whey Mass", R.drawable.whey5, "Mass building formula", 85, 4.2, 5, 1, 1));
+        SeeFull.add(new BestDeal("Gold Standard Whey", R.drawable.whey6, "Best seller protein", 95, 4.8, 6, 1, 1));
+        SeeFull.add(new BestDeal("Plant Protein", R.drawable.whey7, "Vegan-friendly protein", 82, 4.3, 7, 1, 1));
+        SeeFull.add(new BestDeal("Hydro Whey", R.drawable.whey8, "Fast absorption protein", 88, 4.5, 8, 1, 1));
+        SeeFull.add(new BestDeal("Super Whey", R.drawable.whey9, "All-in-one protein", 91, 4.7, 9, 1, 1));
+        SeeFull.add(new BestDeal("Ice Cre", R.drawable.cre1, "Additional strength", 96, 4.4, 1, 2, 1));
+        SeeFull.add(new BestDeal("ImDoc Cre", R.drawable.cre2, "Additional durability", 49, 3.5, 2, 2, 1));
+        SeeFull.add(new BestDeal("Hyper Cre", R.drawable.cre3, "Additional strength", 35, 3.3, 3, 2, 1));
+        SeeFull.add(new BestDeal("Siver Cre", R.drawable.cre4, "Additional durability", 35, 3.7, 4, 2, 1));
+        SeeFull.add(new BestDeal("Cre Muscel", R.drawable.cre5, "Additional strength", 75, 4.7, 5, 2, 1));
+        SeeFull.add(new BestDeal("New Cre", R.drawable.cre6, "Additional strength", 35, 3.8, 6, 2, 1));
+        SeeFull.add(new BestDeal("White Cre", R.drawable.cre7, "Additional durability", 25, 3.9, 7, 2, 1));
+        SeeFull.add(new BestDeal("Power Cre", R.drawable.cre8, "Additional durability", 79, 5, 8, 2, 1));
+        SeeFull.add(new BestDeal("Cretiner", R.drawable.cre9, "Additional strength", 29, 3.4, 9, 2, 1));
+
+        SeeFull.add(new BestDeal("Pre no1", R.drawable.pre1, "Additional strength", 96, 4.4, 1, 4, 1));
+        SeeFull.add(new BestDeal("Pre no2", R.drawable.pre2, "Additional durability", 49, 3.5, 2, 4, 1));
+        SeeFull.add(new BestDeal("Pre De", R.drawable.pre3, "Additional strength", 35, 2.3, 3, 4, 1));
+        SeeFull.add(new BestDeal("Pre Pow", R.drawable.pre4, "Additional durability", 57, 3.7, 4, 4, 1));
+        SeeFull.add(new BestDeal("Pre Ice", R.drawable.pre5, "Additional strength", 75, 4.7, 5, 4, 1));
+        SeeFull.add(new BestDeal("Pre Mn", R.drawable.pre6, "Additional durability", 25, 2.8, 6, 4, 1));
+        SeeFull.add(new BestDeal("Pre PM", R.drawable.pre7, "Additional strength", 25, 3.9, 7, 4, 1));
+        SeeFull.add(new BestDeal("Pre God", R.drawable.pre8, "Additional strength", 79, 5, 8, 4, 1));
+        SeeFull.add(new BestDeal("BCAA Gren", R.drawable.bc1, "Additional strength", 36, 4.4, 1, 3, 1));
+        SeeFull.add(new BestDeal("BCAA PM", R.drawable.bc2, "Additional strength", 49, 3.5, 2, 3, 1));
+        SeeFull.add(new BestDeal("BCAA MD", R.drawable.bc3, "Additional durability", 35, 2.3, 3, 3, 1));
+        SeeFull.add(new BestDeal("Ice BCAA", R.drawable.bc4, "Additional strength", 35, 3.7, 4, 3, 1));
+        SeeFull.add(new BestDeal("Pow BCAA", R.drawable.bc5, "Additional durability", 35, 4.7, 5, 3, 1));
+        SeeFull.add(new BestDeal("BCAA Black", R.drawable.bc6, "Additional strength", 25, 2.8, 6, 3, 1));
+        SeeFull.add(new BestDeal("Red BCAA", R.drawable.bc7, "Additional durability", 25, 3.9, 7, 3, 1));
+        SeeFull.add(new BestDeal("Mus BCAA", R.drawable.bc8, "Additional strength", 79, 5, 8, 3, 1));
+        SeeFull.add(new BestDeal("Vitamin Gre", R.drawable.vi1, "Mineral supplements", 36, 4.4, 1, 5, 1));
+        SeeFull.add(new BestDeal("Vitamin Fredd", R.drawable.vi3, "Absorbs quickly", 49, 3.5, 2, 5, 1));
+        SeeFull.add(new BestDeal("Vitamin Organ", R.drawable.vi2, "Mineral supplements", 35, 2.3, 3, 5, 1));
+        SeeFull.add(new BestDeal("Vitamin Gre", R.drawable.vi4, "Absorbs quickly", 35, 3.7, 4, 5, 1));
+        SeeFull.add(new BestDeal("Vitamin no1", R.drawable.vi2, "Absorbs quickly", 75, 4.7, 5, 5, 1));
+        SeeFull.add(new BestDeal("Vitamin Gre New", R.drawable.vi3, "Mineral supplements", 25, 2.8, 6, 5, 1));
+        SeeFull.add(new BestDeal("Vitamin Fede", R.drawable.vi4, "Mineral supplements", 25, 3.9, 7, 5, 1));
 
         recyclerView = findViewById(R.id.CategoryView);
 
@@ -135,18 +177,34 @@ public class MainActivity extends AppCompatActivity {
             bestDealList.add(new BestDeal("Vitamin Fede", R.drawable.vi4, "Mineral supplements", 25, 3.9, 7, 5, 1));
         }
 
-        BestDealAdapter bestDealAdapter = new BestDealAdapter(bestDealList);
-        recyclerView1.setAdapter(bestDealAdapter);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
-        bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
-            @Override
-            public void DoSomeThing(int position) {
-                BestDeal bestDeal = bestDealList.get(position);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("bestDeal", bestDeal);
-                startActivity(intent);
-            }
-        });
+       if(idCategory == 0){
+           BestDealAdapter bestDealAdapter = new BestDealAdapter(SeeFull);
+           recyclerView1.setAdapter(bestDealAdapter);
+           recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+           bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
+               @Override
+               public void DoSomeThing(int position) {
+                   BestDeal bestDeal = SeeFull.get(position);
+                   Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                   intent.putExtra("bestDeal", bestDeal);
+                   startActivity(intent);
+               }
+           });
+       }
+       else {
+           BestDealAdapter bestDealAdapter = new BestDealAdapter(bestDealList);
+           recyclerView1.setAdapter(bestDealAdapter);
+           recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+           bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
+               @Override
+               public void DoSomeThing(int position) {
+                   BestDeal bestDeal = bestDealList.get(position);
+                   Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                   intent.putExtra("bestDeal", bestDeal);
+                   startActivity(intent);
+               }
+           });
+       }
 
         categoryAdapter.setItemCickListener(new CategoryAdapter.OnMyItemCickListener() {
             @Override
@@ -292,66 +350,51 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public  void AllSee (View view) {
-        SeeFull.add(new BestDeal("Red Whey", R.drawable.whey1, "Good for practice", 80, 4.4, 1, 1, 1));
-        SeeFull.add(new BestDeal("Whey Pro", R.drawable.whey2, "Gain weight", 87, 3.5, 2, 1, 1));
-        SeeFull.add(new BestDeal("Whey Gainer", R.drawable.whey3, "Muscle gain", 79, 4, 3, 1, 1));
-        SeeFull.add(new BestDeal("Whey Isolate", R.drawable.whey4, "Pure protein for growth", 90, 4.6, 4, 1, 1));
-        SeeFull.add(new BestDeal("Whey Mass", R.drawable.whey5, "Mass building formula", 85, 4.2, 5, 1, 1));
-        SeeFull.add(new BestDeal("Gold Standard Whey", R.drawable.whey6, "Best seller protein", 95, 4.8, 6, 1, 1));
-        SeeFull.add(new BestDeal("Plant Protein", R.drawable.whey7, "Vegan-friendly protein", 82, 4.3, 7, 1, 1));
-        SeeFull.add(new BestDeal("Hydro Whey", R.drawable.whey8, "Fast absorption protein", 88, 4.5, 8, 1, 1));
-        SeeFull.add(new BestDeal("Super Whey", R.drawable.whey9, "All-in-one protein", 91, 4.7, 9, 1, 1));
-        SeeFull.add(new BestDeal("Ice Cre", R.drawable.cre1, "Additional strength", 96, 4.4, 1, 2, 1));
-        SeeFull.add(new BestDeal("ImDoc Cre", R.drawable.cre2, "Additional durability", 49, 3.5, 2, 2, 1));
-        SeeFull.add(new BestDeal("Hyper Cre", R.drawable.cre3, "Additional strength", 35, 3.3, 3, 2, 1));
-        SeeFull.add(new BestDeal("Siver Cre", R.drawable.cre4, "Additional durability", 35, 3.7, 4, 2, 1));
-        SeeFull.add(new BestDeal("Cre Muscel", R.drawable.cre5, "Additional strength", 75, 4.7, 5, 2, 1));
-        SeeFull.add(new BestDeal("New Cre", R.drawable.cre6, "Additional strength", 35, 3.8, 6, 2, 1));
-        SeeFull.add(new BestDeal("White Cre", R.drawable.cre7, "Additional durability", 25, 3.9, 7, 2, 1));
-        SeeFull.add(new BestDeal("Power Cre", R.drawable.cre8, "Additional durability", 79, 5, 8, 2, 1));
-        SeeFull.add(new BestDeal("Cretiner", R.drawable.cre9, "Additional strength", 29, 3.4, 9, 2, 1));
 
-        SeeFull.add(new BestDeal("Pre no1", R.drawable.pre1, "Additional strength", 96, 4.4, 1, 4, 1));
-        SeeFull.add(new BestDeal("Pre no2", R.drawable.pre2, "Additional durability", 49, 3.5, 2, 4, 1));
-        SeeFull.add(new BestDeal("Pre De", R.drawable.pre3, "Additional strength", 35, 2.3, 3, 4, 1));
-        SeeFull.add(new BestDeal("Pre Pow", R.drawable.pre4, "Additional durability", 57, 3.7, 4, 4, 1));
-        SeeFull.add(new BestDeal("Pre Ice", R.drawable.pre5, "Additional strength", 75, 4.7, 5, 4, 1));
-        SeeFull.add(new BestDeal("Pre Mn", R.drawable.pre6, "Additional durability", 25, 2.8, 6, 4, 1));
-        SeeFull.add(new BestDeal("Pre PM", R.drawable.pre7, "Additional strength", 25, 3.9, 7, 4, 1));
-        SeeFull.add(new BestDeal("Pre God", R.drawable.pre8, "Additional strength", 79, 5, 8, 4, 1));
-        SeeFull.add(new BestDeal("BCAA Gren", R.drawable.bc1, "Additional strength", 36, 4.4, 1, 3, 1));
-        SeeFull.add(new BestDeal("BCAA PM", R.drawable.bc2, "Additional strength", 49, 3.5, 2, 3, 1));
-        SeeFull.add(new BestDeal("BCAA MD", R.drawable.bc3, "Additional durability", 35, 2.3, 3, 3, 1));
-        SeeFull.add(new BestDeal("Ice BCAA", R.drawable.bc4, "Additional strength", 35, 3.7, 4, 3, 1));
-        SeeFull.add(new BestDeal("Pow BCAA", R.drawable.bc5, "Additional durability", 35, 4.7, 5, 3, 1));
-        SeeFull.add(new BestDeal("BCAA Black", R.drawable.bc6, "Additional strength", 25, 2.8, 6, 3, 1));
-        SeeFull.add(new BestDeal("Red BCAA", R.drawable.bc7, "Additional durability", 25, 3.9, 7, 3, 1));
-        SeeFull.add(new BestDeal("Mus BCAA", R.drawable.bc8, "Additional strength", 79, 5, 8, 3, 1));
-        SeeFull.add(new BestDeal("Vitamin Gre", R.drawable.vi1, "Mineral supplements", 36, 4.4, 1, 5, 1));
-        SeeFull.add(new BestDeal("Vitamin Fredd", R.drawable.vi3, "Absorbs quickly", 49, 3.5, 2, 5, 1));
-        SeeFull.add(new BestDeal("Vitamin Organ", R.drawable.vi2, "Mineral supplements", 35, 2.3, 3, 5, 1));
-        SeeFull.add(new BestDeal("Vitamin Gre", R.drawable.vi4, "Absorbs quickly", 35, 3.7, 4, 5, 1));
-        SeeFull.add(new BestDeal("Vitamin no1", R.drawable.vi2, "Absorbs quickly", 75, 4.7, 5, 5, 1));
-        SeeFull.add(new BestDeal("Vitamin Gre New", R.drawable.vi3, "Mineral supplements", 25, 2.8, 6, 5, 1));
-        SeeFull.add(new BestDeal("Vitamin Fede", R.drawable.vi4, "Mineral supplements", 25, 3.9, 7, 5, 1));
+    public  void AllSee (View view) {
+
+        id =0;
 
         BestDealAdapter bestDealAdapter = new BestDealAdapter(SeeFull);
         recyclerView1.setAdapter(bestDealAdapter);
         recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+        bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
+            @Override
+            public void DoSomeThing(int position) {
+                BestDeal bestDeal = SeeFull.get(position);
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("bestDeal", bestDeal);
+                startActivity(intent);
+            }
+        });
+
 
     }
     public  void search(View view) {
         List<BestDeal> SearchList = new ArrayList<BestDeal>();
         String search = searchEditText.getText().toString().trim();
-
         SearchList.clear(); // Xóa danh sách cũ
-        for (BestDeal i : SeeFull) {
-            String title = i.getTitle();
-            if (title.toLowerCase().contains(search.toLowerCase())) {
-                SearchList.add(i); // Thêm nếu tìm thấy
+        if(id==0)
+        {
+
+
+
+            for (BestDeal i : SeeFull) {
+                String title = i.getTitle();
+                if (title.toLowerCase().contains(search.toLowerCase())) {
+                    SearchList.add(i); // Thêm nếu tìm thấy
+                }
             }
         }
+        else {
+            for (BestDeal i : SeeFull) {
+                String title = i.getTitle();
+                if (title.toLowerCase().contains(search.toLowerCase()) && id== i.getCategoryId()) {
+                    SearchList.add(i); // Thêm nếu tìm thấy
+                }
+            }
+        }
+
 
 
         BestDealAdapter bestDealAdapter = new BestDealAdapter(SearchList);
