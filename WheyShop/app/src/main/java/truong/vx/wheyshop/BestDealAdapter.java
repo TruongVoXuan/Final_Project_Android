@@ -16,6 +16,7 @@ import java.util.List;
 public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyViewHolder> {
 
     private List<BestDeal> bestDealList;
+
     public  interface OnMyItemCickListener{
         void DoSomeThing (int position);
     }
@@ -78,5 +79,8 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
             titleView = itemView.findViewById(R.id.Title);
             price = itemView.findViewById(R.id.Price);
         }
+
     }
+
 }
+

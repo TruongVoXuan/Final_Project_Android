@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,19 +39,20 @@ public class Cart extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        totalTxt = findViewById(R.id.totalTxt); // Đúng id
-
+        totalTxt = findViewById(R.id.totalTxt);
         recyclerView = findViewById(R.id.Cartview);
+
+        loadData();
+        updateUI();
 
         if (savedInstanceState != null) {
             bestDealList = savedInstanceState.getParcelableArrayList("bestDealList");
             numList = savedInstanceState.getIntegerArrayList("numList");
         } else {
-            loadData(); // Tải dữ liệu từ SharedPreferences
+            loadData();
         }
 
         Intent intent = getIntent();
@@ -60,20 +62,52 @@ public class Cart extends AppCompatActivity {
         if (bestDeal != null) {
             bestDealList.add(bestDeal);
             numList.add(num);
-            saveData(); // Lưu dữ liệu sau khi cập nhật giỏ hàng
+            saveData();
         }
 
         CartAdapter cartAdapter = new CartAdapter(bestDealList, numList);
         recyclerView.setAdapter(cartAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        calculateAndUpdateTotal(); // Cập nhật tổng ngay khi khởi tạo
+        // Set the listener here
+        cartAdapter.setItemCickListener(new CartAdapter.OnMyItemCickListener() {
+            @Override
+            public void BtnIncNum(int position) {
+                int i = numList.get(position) + 1;
+                numList.set(position, i);
+                updateTotal();
+                updateUI();
+            }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+            @Override
+            public void BtnDecNum(int position) {
+                if (numList.get(position) == 1) {
+                    BestDeal item = bestDealList.get(position);
+                    new AlertDialog.Builder(Cart.this)
+                            .setTitle("Xác nhận xóa")
+                            .setMessage("Bạn có chắc chắn muốn xoá " + item.getTitle() + " trong giỏ hàng không?")
+                            .setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    bestDealList.remove(position);
+                                    numList.remove(position);
+                                    updateTotal();
+                                    updateUI();
+                                    Toast.makeText(Cart.this, "Đã xóa " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("Hủy", null)
+                            .show();
+                } else {
+                    int i = numList.get(position) - 1;
+                    numList.set(position, i);
+                    updateTotal();
+                    updateUI();
+                }
+            }
         });
+
+        calculateAndUpdateTotal();
     }
 
     private void calculateAndUpdateTotal() {
@@ -82,7 +116,7 @@ public class Cart extends AppCompatActivity {
             for (int i = 0; i < bestDealList.size(); i++) {
                 BestDeal deal = bestDealList.get(i);
                 int quantity = numList.get(i);
-                total += deal.getPrice() * quantity; // Giả sử BestDeal có phương thức getPrice()
+                total += deal.getPrice() * quantity;
             }
         }
         totalTxt.setText(String.format("Total: %.2f", total));
@@ -115,7 +149,7 @@ public class Cart extends AppCompatActivity {
             @Override
             public void BtnDecNum(int position) {
                 if (numList.get(position) == 1) {
-                    BestDeal item = bestDealList.get(position); // Lấy đối tượng BestDeal tại vị trí position
+                    BestDeal item = bestDealList.get(position);
                     new AlertDialog.Builder(Cart.this)
                             .setTitle("Xác nhận xóa")
                             .setMessage("Bạn có chắc chắn muốn xoá " + item.getTitle() + " trong giỏ hàng không?")
@@ -147,6 +181,7 @@ public class Cart extends AppCompatActivity {
             total += bestDealList.get(i).getPrice() * numList.get(i);
         }
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -154,6 +189,7 @@ public class Cart extends AppCompatActivity {
         outState.putIntegerArrayList("numList", new ArrayList<>(numList));
         outState.putInt("num", num);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -168,7 +204,7 @@ public class Cart extends AppCompatActivity {
         String numListJson = gson.toJson(numList);
         editor.putString("bestDealList", bestDealListJson);
         editor.putString("numList", numListJson);
-        editor.putFloat("total", (float) total); // Lưu giá trị total
+        editor.putFloat("total", (float) total);
         editor.apply();
     }
 
@@ -177,16 +213,18 @@ public class Cart extends AppCompatActivity {
         Gson gson = new Gson();
         String bestDealListJson = sharedPreferences.getString("bestDealList", null);
         String numListJson = sharedPreferences.getString("numList", null);
+        Type bestDealListType = new TypeToken<ArrayList<BestDeal>>() {}.getType();
+        Type numListType = new TypeToken<ArrayList<Integer>>() {}.getType();
+        bestDealList = gson.fromJson(bestDealListJson, bestDealListType);
+        numList = gson.fromJson(numListJson, numListType);
+        total = sharedPreferences.getFloat("total", 0);
 
-        if (bestDealListJson != null && numListJson != null) {
-            bestDealList = gson.fromJson(bestDealListJson, new TypeToken<List<BestDeal>>() {}.getType());
-            numList = gson.fromJson(numListJson, new TypeToken<List<Integer>>() {}.getType());
-        } else {
+        if (bestDealList == null) {
             bestDealList = new ArrayList<>();
+        }
+        if (numList == null) {
             numList = new ArrayList<>();
         }
-
-        total = sharedPreferences.getFloat("total", 0);
     }
 
 

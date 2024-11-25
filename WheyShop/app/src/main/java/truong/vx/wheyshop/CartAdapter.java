@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,11 +19,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     private List<BestDeal> bestDealList;
     private List<Integer> numList;
     public  interface OnMyItemCickListener{
-        void BtnIncNum(int position);
-        void BtnDecNum(int position);
+        void BtnIncNum (int position);
+        void BtnDecNum (int position);
     }
-
-    private OnMyItemCickListener itemCickListener;
+    private CartAdapter.OnMyItemCickListener itemCickListener;
     public void setItemCickListener(CartAdapter.OnMyItemCickListener itemCickListener) {
         this.itemCickListener = itemCickListener;
     }
@@ -59,6 +59,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             holder.price.setText("" + bestDeal.getPrice() + " $");
             holder.num.setText(this.numList.get(position) + " ");
         }
+
         holder.btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
