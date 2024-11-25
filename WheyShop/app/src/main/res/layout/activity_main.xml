@@ -298,6 +298,7 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -306,6 +307,7 @@
                 >
 
                 <ImageView
+                    android:onClick="Btncart"
                     android:id="@+id/imageView6"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

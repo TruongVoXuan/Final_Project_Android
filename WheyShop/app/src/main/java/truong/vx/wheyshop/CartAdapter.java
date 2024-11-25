@@ -18,10 +18,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     private List<BestDeal> bestDealList;
     private List<Integer> numList;
     public  interface OnMyItemCickListener{
-        void DoSomeThing (int position);
+        void BtnIncNum(int position);
+        void BtnDecNum(int position);
     }
+
     private OnMyItemCickListener itemCickListener;
-    public void setItemCickListener(OnMyItemCickListener itemCickListener) {
+    public void setItemCickListener(CartAdapter.OnMyItemCickListener itemCickListener) {
         this.itemCickListener = itemCickListener;
     }
     public CartAdapter(List<BestDeal> bestDealList , List<Integer> numList) {
@@ -57,10 +59,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             holder.price.setText("" + bestDeal.getPrice() + " $");
             holder.num.setText(this.numList.get(position) + " ");
         }
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemCickListener.DoSomeThing(position);
+                itemCickListener.BtnDecNum(position);
+            }
+        });
+        holder.btnInc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemCickListener.BtnIncNum(position);
             }
         });
     }
@@ -76,6 +84,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         private TextView titleView;
         private TextView price;
         private TextView num;
+        private TextView btnDec , btnInc;
+        @SuppressLint("WrongViewCast")
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.Cart);
@@ -83,6 +93,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             titleView = itemView.findViewById(R.id.titleTxt);
             price = itemView.findViewById(R.id.price);
             num = itemView.findViewById(R.id.numTxt);
+            btnDec = itemView.findViewById(R.id.BtnDec);
+            btnInc = itemView.findViewById(R.id.BtnInc);
         }
     }
 }
