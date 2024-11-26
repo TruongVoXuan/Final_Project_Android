@@ -115,7 +115,7 @@ public class DetailActivity extends AppCompatActivity {
             bestDealList.add(new BestDeal("Pre Ice", R.drawable.pre5, "Additional strength", 75, 4.7, 5, 4, 1));
             bestDealList.add(new BestDeal("Pre Mn", R.drawable.pre6, "Additional durability", 25, 2.8, 6, 4, 1));
             bestDealList.add(new BestDeal("Pre PM", R.drawable.pre7, "Additional strength", 25, 3.9, 7, 4, 1));
-            bestDealList.add(new BestDeal("Pre God", R.drawable.pre8, "Additional strength", 79, 5, 8, 4, 1));
+            bestDealList.add(new BestDeal("Pre God", R.drawable.pre3, "Additional strength", 79, 5, 8, 4, 1));
         }
         if (bestDeal.getCategoryId() == 5) {
             bestDealList.add(new BestDeal("Vitamin Gre", R.drawable.vi1, "Mineral supplements", 36, 4.4, 1, 5, 1));
