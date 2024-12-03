@@ -1,6 +1,7 @@
 package truong.vx.wheyshop;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.text.Editable;
@@ -16,6 +17,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchEditText;
     private List<BestDeal> fullBestDealList = new ArrayList<>();
     private List<BestDeal> SeeFull = new ArrayList<>();
+    private List<BestDeal> wishlist = new ArrayList<>();
 
     private List<BestDeal> filterBestDeals = new ArrayList<>();
     private BestDealAdapter bestDealAdapter;
@@ -57,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
         bestDealAdapter = new BestDealAdapter(filterBestDeals);
         recyclerView = findViewById(R.id.CategoryView);
         recyclerView1 = findViewById(R.id.BestDealView);
-
-
 
 
         EdgeToEdge.enable(this);
@@ -177,34 +181,33 @@ public class MainActivity extends AppCompatActivity {
             bestDealList.add(new BestDeal("Vitamin Fede", R.drawable.vi4, "Mineral supplements", 25, 3.9, 7, 5, 1));
         }
 
-       if(idCategory == 0){
-           BestDealAdapter bestDealAdapter = new BestDealAdapter(SeeFull);
-           recyclerView1.setAdapter(bestDealAdapter);
-           recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
-           bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
-               @Override
-               public void DoSomeThing(int position) {
-                   BestDeal bestDeal = SeeFull.get(position);
-                   Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                   intent.putExtra("bestDeal", bestDeal);
-                   startActivity(intent);
-               }
-           });
-       }
-       else {
-           BestDealAdapter bestDealAdapter = new BestDealAdapter(bestDealList);
-           recyclerView1.setAdapter(bestDealAdapter);
-           recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
-           bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
-               @Override
-               public void DoSomeThing(int position) {
-                   BestDeal bestDeal = bestDealList.get(position);
-                   Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                   intent.putExtra("bestDeal", bestDeal);
-                   startActivity(intent);
-               }
-           });
-       }
+        if (idCategory == 0) {
+            BestDealAdapter bestDealAdapter = new BestDealAdapter(SeeFull);
+            recyclerView1.setAdapter(bestDealAdapter);
+            recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+            bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
+                @Override
+                public void DoSomeThing(int position) {
+                    BestDeal bestDeal = SeeFull.get(position);
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                    intent.putExtra("bestDeal", bestDeal);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            BestDealAdapter bestDealAdapter = new BestDealAdapter(bestDealList);
+            recyclerView1.setAdapter(bestDealAdapter);
+            recyclerView1.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+            bestDealAdapter.setItemCickListener(new BestDealAdapter.OnMyItemCickListener() {
+                @Override
+                public void DoSomeThing(int position) {
+                    BestDeal bestDeal = bestDealList.get(position);
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                    intent.putExtra("bestDeal", bestDeal);
+                    startActivity(intent);
+                }
+            });
+        }
 
         categoryAdapter.setItemCickListener(new CategoryAdapter.OnMyItemCickListener() {
             @Override
@@ -334,6 +337,31 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
+        loadWishlist();
+    }
+
+    private void saveWishlist() {
+        SharedPreferences sharedPreferences = getSharedPreferences("WishlistData",  MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String wishlistJson = gson.toJson(wishlist);
+        editor.putString("wishlist", wishlistJson);
+        editor.apply();
+    }
+
+    private void loadWishlist() {
+        SharedPreferences sharedPreferences = getSharedPreferences("WishlistData", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String wishlistJson = sharedPreferences.getString("wishlist", null);
+
+        if (wishlistJson != null) {
+            Type type = new TypeToken<List<BestDeal>>() {
+            }.getType();
+            wishlist = gson.fromJson(wishlistJson, type);
+        } else {
+            wishlist = new ArrayList<>();
+        }
     }
 
 

@@ -15,11 +15,11 @@
         android:layout_height="135dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favBtn"
+        app:layout_constraintTop_toBottomOf="@+id/favoriteIcon"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <ImageView
-        android:id="@+id/favBtn"
+        android:id="@+id/favoriteIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

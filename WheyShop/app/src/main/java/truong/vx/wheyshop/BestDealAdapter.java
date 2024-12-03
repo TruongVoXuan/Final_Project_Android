@@ -1,11 +1,13 @@
 package truong.vx.wheyshop;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,6 +18,9 @@ import java.util.List;
 public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyViewHolder> {
 
     private List<BestDeal> bestDealList;
+    private Context context; // Biến để lưu context
+    private WishlistManager wishlistManager; // Biến để quản lý Wishlist
+
 
     public  interface OnMyItemCickListener{
         void DoSomeThing (int position);
@@ -26,6 +31,11 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
     }
     public BestDealAdapter(List<BestDeal> bestDealList) {
         this.bestDealList = bestDealList;
+    }
+    public BestDealAdapter(Context context, List<BestDeal> bestDealList) {
+        this.context = context;
+        this.bestDealList = bestDealList;
+        this.wishlistManager = WishlistManager.getInstance(context);
     }
 
     @NonNull
@@ -59,6 +69,13 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
                 itemCickListener.DoSomeThing(position);
             }
         });
+        holder.favoriteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wishlistManager.addToWishlist(bestDeal); // Thêm sản phẩm vào Wishlist
+                Toast.makeText(context, bestDeal.getTitle() + " đã thêm vào Wishlist", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -66,21 +83,21 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
         return bestDealList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder {
         private ConstraintLayout cardView;
         private ImageView imageView;
+        private ImageView favoriteIcon; // Icon yêu thích
         private TextView titleView;
         private TextView price;
-        private int idCategory;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.constraint);
             imageView = itemView.findViewById(R.id.imageBestdeal);
+            favoriteIcon = itemView.findViewById(R.id.favoriteIcon); // Ánh xạ icon
             titleView = itemView.findViewById(R.id.Title);
             price = itemView.findViewById(R.id.Price);
         }
-
     }
 
 }
-
