@@ -338,6 +338,7 @@
                 >
 
                 <ImageView
+                    android:onClick="BtnWishList"
                     android:id="@+id/imageView7"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

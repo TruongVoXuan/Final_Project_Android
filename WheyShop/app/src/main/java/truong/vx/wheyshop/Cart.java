@@ -257,4 +257,9 @@ public class Cart extends AppCompatActivity {
         updateUI(); // Cập nhật giao diện người dùng
     }
 
+
+    public void BtnWishList (View view){
+        Intent intent = new Intent(this , WishList.class);
+        startActivity(intent);
+    }
 }

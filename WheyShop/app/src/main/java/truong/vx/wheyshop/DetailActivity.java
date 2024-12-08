@@ -2,11 +2,13 @@ package truong.vx.wheyshop;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,11 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +33,20 @@ public class DetailActivity extends AppCompatActivity {
     RatingBar ratingBar;
     int num = 1;
     BestDeal bestDeal;
+    private List<BestDeal> bestDealListCart;
+    private List<BestDeal> bestDealListWishList;
+    private List<Integer> numList;
+    private double total = 0;
+    private int FlagAdd = 0;
+    DecimalFormat df = new DecimalFormat("#.##");
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_detail);
+
+        loadData();
 
         Intent intent = getIntent();
         bestDeal = intent.getParcelableExtra("bestDeal");
@@ -62,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
             numTxt.setText(num + " ");
         }
         if (bestDeal.getCategoryId() == 4){
-            priceTxt.setText(bestDeal.getPrice() + " $/Can");
+            priceTxt.setText(bestDeal.getPrice() + " $");
             numTxt.setText(num + " ");
         }
         if (bestDeal.getCategoryId() == 5){
@@ -161,7 +176,6 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         });
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -174,7 +188,10 @@ public class DetailActivity extends AppCompatActivity {
         intent.putExtra("idCategory" , bestDeal.getCategoryId());
         startActivity(intent);
     }
-
+    public void BtnWishList (View view){
+        Intent intent = new Intent(this , WishList.class);
+        startActivity(intent);
+    }
     public void DecBtn_Onclick (View view){
         if (num > 1) num--;
         totalTxt.setText(num * bestDeal.getPrice() + " $");
@@ -193,26 +210,102 @@ public class DetailActivity extends AppCompatActivity {
     }
     public void IncBtn_Onclick (View view){
         num++;
-        totalTxt.setText(num * bestDeal.getPrice() + " $");
+        totalTxt.setText(df.format(num * bestDeal.getPrice()) + " $");
         if (bestDeal.getCategoryId() == 1 || bestDeal.getCategoryId() == 2){
-            numTxt.setText(num + " ");
+            numTxt.setText(num + " Kg");
         }
         if (bestDeal.getCategoryId() == 3){
-            numTxt.setText(num + " ");
+            numTxt.setText(num + " Box");
         }
         if (bestDeal.getCategoryId() == 4){
-            numTxt.setText(num + " ");
+            numTxt.setText(num + " Can");
         }
         if (bestDeal.getCategoryId() == 5){
-            numTxt.setText(num + " ");
+            numTxt.setText(num + " Pec");
         }
     }
     public void AddBtn_Onclick (View view){
         //Do sonmething
-        Intent intent = new Intent(this , Cart.class);
-        intent.putExtra("bestDeal" , bestDeal);
-        intent.putExtra("num" , num);
-        startActivity(intent);
+        FlagAdd = 1;
+        for (int i = 0 ; i < bestDealListCart.size() ; i++){
+            if (bestDeal.getCategoryId() == bestDealListCart.get(i).getCategoryId() && bestDeal.getId() == bestDealListCart.get(i).getId()){
+                numList.set(i , numList.get(i) + num);
+                total += bestDeal.getPrice() *num;
+                saveData();
+                Toast.makeText(DetailActivity.this, "Add your cart success !", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
+        bestDealListCart.add(bestDeal);
+        numList.add(num);
+        total += bestDeal.getPrice() *num;
+        saveData();
+        Toast.makeText(DetailActivity.this, "Add your cart success !", Toast.LENGTH_LONG).show();
+    }
 
+    public void AddWishListBtn_Onclick (View view){
+        //Do sonmething
+        FlagAdd = 2;
+        for (int i = 0 ; i < bestDealListWishList.size() ; i++){
+            if (bestDeal.getCategoryId() == bestDealListWishList.get(i).getCategoryId() && bestDeal.getId() == bestDealListWishList.get(i).getId()){
+                return;
+            }
+        }
+        bestDealListWishList.add(bestDeal);
+        saveData();
+        Toast.makeText(DetailActivity.this, "Add your WishList success !", Toast.LENGTH_LONG).show();
+    }
+
+    private void saveData() {
+        if (FlagAdd == 1){
+            SharedPreferences sharedPreferences = getSharedPreferences("CartData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String bestDealListJson = gson.toJson(bestDealListCart);
+            String numListJson = gson.toJson(numList);
+            editor.putString("bestDealList", bestDealListJson);
+            editor.putString("numList", numListJson);
+            editor.putFloat("total", (float) total); // Lưu giá trị total
+            editor.apply();
+        }
+        if (FlagAdd == 2){
+            SharedPreferences sharedPreferences = getSharedPreferences("WishlistData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String bestDealListJson = gson.toJson(bestDealListWishList);
+            editor.putString("bestDealList", bestDealListJson);
+            editor.apply();
+        }
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("CartData", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String bestDealListJson = sharedPreferences.getString("bestDealList", null);
+        String numListJson = sharedPreferences.getString("numList", null);
+        Type bestDealListType = new TypeToken<ArrayList<BestDeal>>() {}.getType();
+        Type numListType = new TypeToken<ArrayList<Integer>>() {}.getType();
+        bestDealListCart = gson.fromJson(bestDealListJson, bestDealListType);
+        numList = gson.fromJson(numListJson, numListType);
+        total = sharedPreferences.getFloat("total", 0); // Khôi phục giá trị total
+
+        if (bestDealListCart == null) {
+            bestDealListCart = new ArrayList<>();
+        }
+        if (numList == null) {
+            numList = new ArrayList<>();
+        }
+
+        // Load wishlist
+        SharedPreferences sharedPreferences1 = getSharedPreferences("WishlistData", MODE_PRIVATE);
+        Gson gson1 = new Gson();
+        String bestDealListJson1 = sharedPreferences1.getString("bestDealList", null);
+        Type bestDealListType1 = new TypeToken<ArrayList<BestDeal>>() {}.getType();
+        bestDealListWishList = gson1.fromJson(bestDealListJson1, bestDealListType1);
+
+
+        if (bestDealListWishList == null) {
+            bestDealListWishList = new ArrayList<>();
+        }
     }
 }

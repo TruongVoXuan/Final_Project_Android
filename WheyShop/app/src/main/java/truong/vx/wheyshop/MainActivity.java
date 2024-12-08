@@ -7,7 +7,8 @@ import android.view.View;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView recyclerView1;
     private EditText searchEditText;
+
+    boolean SetFull = true;
+
+    List<Category> categoryList = new ArrayList<Category>();
+    private ConstraintLayout Background;
+
     private List<BestDeal> fullBestDealList = new ArrayList<>();
     private List<BestDeal> SeeFull = new ArrayList<>();
     private List<BestDeal> wishlist = new ArrayList<>();
@@ -124,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.CategoryView);
 
         recyclerView1 = findViewById(R.id.BestDealView);
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categoryList);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(categoryList , SetFull);
         recyclerView.setAdapter(categoryAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -433,6 +440,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void Btncart (View view){
         Intent intent = new Intent(this , Cart.class);
+        startActivity(intent);
+    }
+
+    public void BtnWishList (View view){
+        Intent intent = new Intent(this , WishList.class);
         startActivity(intent);
     }
 
