@@ -64,8 +64,11 @@ public class WishList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         wishlistAdapter.setItemCickListener(new WishlistAdapter.OnMyItemCickListener() {
             @Override
-            public void DosomeThing(int position) {
-
+            public void DoSomeThing(int position) {
+                BestDeal bestDeal = bestDealList.get(position);
+                Intent intent = new Intent(WishList.this, DetailActivity.class);
+                intent.putExtra("bestDeal", bestDeal);
+                startActivity(intent);
             }
 
             @Override
@@ -86,6 +89,9 @@ public class WishList extends AppCompatActivity {
                         .show();
             }
         });
+
+
+
 
     }
 

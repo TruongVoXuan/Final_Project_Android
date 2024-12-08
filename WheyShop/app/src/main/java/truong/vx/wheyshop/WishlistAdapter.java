@@ -18,8 +18,10 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
 
     private List<BestDeal> bestDealList;
     public  interface OnMyItemCickListener{
-        void DosomeThing(int position);
+
         void BtnClearItem (int position);
+
+        void DoSomeThing(int position);
     }
     private WishlistAdapter.OnMyItemCickListener itemCickListener;
     public void setItemCickListener(WishlistAdapter.OnMyItemCickListener itemCickListener) {
@@ -59,12 +61,20 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
                 itemCickListener.BtnClearItem(position);
             }
         });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemCickListener.DoSomeThing(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return bestDealList.size();
     }
+
 
     class MyViewHolder extends RecyclerView.ViewHolder{
         private ConstraintLayout cardView;
@@ -83,3 +93,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
         }
     }
 }
+
+
+
