@@ -43,6 +43,10 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
+
+    implementation(libs.loggingInterceptor)
+    implementation (libs.navigation.fragment)
+    implementation (libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

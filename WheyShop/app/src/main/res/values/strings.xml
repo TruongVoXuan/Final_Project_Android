@@ -3,4 +3,8 @@
     <string name="intro_title">Let\'s Fuel Your   <font color="#f3C024">Fitness Journey</font>  </string>
     <string name="intro_login">Already have an account?</string>
     <string name="intro_signin"> <font color="#f3C024">Sign in</font></string>
+
+    <string name="signup">By signing in with an account , you agree to GUIDER \'s Terms of Service and Privacy Policy</string>
+    <string name="forgot_password">Enter the email address registered with your account. We \'ll send you a verify code to reset your password</string>
+    <string name="verify">Please verify your email address</string>
 </resources>

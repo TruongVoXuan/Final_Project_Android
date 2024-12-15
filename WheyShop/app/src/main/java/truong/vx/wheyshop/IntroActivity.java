@@ -2,6 +2,7 @@ package truong.vx.wheyshop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,8 @@ public class IntroActivity extends BaseActivity {
         binding=ActivityIntroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.startBtn.setOnClickListener(v -> startActivity(new Intent(  IntroActivity.this, MainActivity.class)));
+        binding.startBtn.setOnClickListener(v -> startActivity(new Intent(  IntroActivity.this, Login.class)));
 
     }
+
 }

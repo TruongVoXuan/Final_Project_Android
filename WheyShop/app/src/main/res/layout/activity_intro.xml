@@ -56,6 +56,7 @@ Achieve your goals with our perfect supplements!"
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startBtn"
+
             android:background="@drawable/yellow_bg"
             style="@android:style/Widget.Button"
             android:layout_marginStart="24dp"
