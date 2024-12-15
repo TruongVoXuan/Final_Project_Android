@@ -154,5 +154,10 @@ public class WishList extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void orderBtn(View view){
+        Intent intent = new Intent(this , MyOrder.class);
+        startActivity(intent);
+    }
+
 
 }

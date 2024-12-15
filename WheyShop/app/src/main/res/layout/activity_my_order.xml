@@ -40,11 +40,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shop Cart"
+                    android:background="@drawable/light_black_bg"
+                    android:text="My Order"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    android:background="@drawable/light_black_bg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imageView11"
                     app:layout_constraintStart_toEndOf="@+id/imageView12"
@@ -61,7 +61,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/bin" />
+                    app:srcCompat="@drawable/favorite_white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
@@ -186,30 +186,19 @@
         <TextView
             android:id="@+id/totalTxt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="180dp"
             android:text="Total"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/appCompatButton2"></TextView>
+         ></TextView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton2"
-            android:onClick="payBtn"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="36dp"
-            android:background="@drawable/btnpay"
-            android:text="Payment"
-            android:textStyle="bold"
-            android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </androidx.appcompat.widget.AppCompatButton>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -322,7 +311,6 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:onClick="orderBtn"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"

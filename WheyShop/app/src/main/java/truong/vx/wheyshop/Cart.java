@@ -262,4 +262,14 @@ public class Cart extends AppCompatActivity {
         Intent intent = new Intent(this , WishList.class);
         startActivity(intent);
     }
+
+    public void payBtn(View view){
+        Intent intent = new Intent(this , MyOrder.class);
+        startActivity(intent);
+    }
+
+    public void orderBtn(View view){
+        Intent intent = new Intent(this , MyOrder.class);
+        startActivity(intent);
+    }
 }
