@@ -158,6 +158,15 @@ public class WishList extends AppCompatActivity {
         Intent intent = new Intent(this , MyOrder.class);
         startActivity(intent);
     }
+    public void BtnProfile(View view){
+        Intent intent = new Intent(this , Profile.class);
+        startActivity(intent);
+    }
+
+    public void BtnMyorder(View view) {
+        Intent intent = new Intent(this, MyOrder.class);
+        startActivity(intent);
+    }
 
 
 }

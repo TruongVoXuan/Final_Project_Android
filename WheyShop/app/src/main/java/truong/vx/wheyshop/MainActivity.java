@@ -411,9 +411,6 @@ public class MainActivity extends AppCompatActivity {
         SearchList.clear(); // Xóa danh sách cũ
         if(id==0)
         {
-
-
-
             for (BestDeal i : SeeFull) {
                 String title = i.getTitle();
                 if (title.toLowerCase().contains(search.toLowerCase())) {
@@ -451,6 +448,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void orderBtn(View view){
         Intent intent = new Intent(this , MyOrder.class);
+        startActivity(intent);
+    }
+
+    public void BtnProfile(View view){
+        Intent intent = new Intent(this , Profile.class);
         startActivity(intent);
     }
 

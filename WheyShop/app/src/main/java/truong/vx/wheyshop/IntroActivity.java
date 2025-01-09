@@ -20,7 +20,7 @@ public class IntroActivity extends BaseActivity {
         binding=ActivityIntroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.startBtn.setOnClickListener(v -> startActivity(new Intent(  IntroActivity.this, Login.class)));
+        binding.startBtn.setOnClickListener(v -> startActivity(new Intent(  IntroActivity.this, MainActivity.class)));
 
     }
 

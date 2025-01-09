@@ -391,6 +391,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:onClick="BtnProfile"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"

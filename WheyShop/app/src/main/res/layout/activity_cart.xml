@@ -321,8 +321,9 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="0dp"
-                android:onClick="orderBtn"
+                android:onClick="BtnMyorder"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
@@ -351,6 +352,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:onClick="BtnMyOrder"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
