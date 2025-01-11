@@ -214,16 +214,16 @@ public class DetailActivity extends AppCompatActivity {
         num++;
         totalTxt.setText(df.format(num * bestDeal.getPrice()) + " $");
         if (bestDeal.getCategoryId() == 1 || bestDeal.getCategoryId() == 2){
-            numTxt.setText(num + " Kg");
+            numTxt.setText(num + " ");
         }
         if (bestDeal.getCategoryId() == 3){
-            numTxt.setText(num + " Box");
+            numTxt.setText(num + " ");
         }
         if (bestDeal.getCategoryId() == 4){
-            numTxt.setText(num + " Can");
+            numTxt.setText(num + " ");
         }
         if (bestDeal.getCategoryId() == 5){
-            numTxt.setText(num + " Pec");
+            numTxt.setText(num + " ");
         }
     }
     public void AddBtn_Onclick (View view){
