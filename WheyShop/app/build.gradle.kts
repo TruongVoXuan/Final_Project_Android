@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
+    implementation ("androidx.appcompat:appcompat:1.6.1")
 
     implementation(libs.loggingInterceptor)
     implementation (libs.navigation.fragment)

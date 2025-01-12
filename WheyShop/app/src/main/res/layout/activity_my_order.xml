@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Cart"
     android:background="@color/black2"
-    >
+    tools:context=".Cart">
+
+    <!-- Scrollable Content -->
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
+            <!-- Top Bar -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                >
+                android:layout_marginHorizontal="24dp">
 
                 <ImageView
-                    android:onClick="BtnBack"
                     android:id="@+id/imageView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/back"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:onClick="BtnBack"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                </ImageView>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,42 +47,39 @@
                     android:background="@drawable/light_black_bg"
                     android:text="My Order"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView11"
-                    app:layout_constraintStart_toEndOf="@+id/imageView12"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </TextView>
-
+                    app:layout_constraintStart_toEndOf="@id/imageView12"
+                    app:layout_constraintEnd_toStartOf="@id/imageView11"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView11"
                     android:layout_width="36dp"
                     android:layout_height="38dp"
+                    android:src="@drawable/bin"
                     android:onClick="BtnClearCart"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/bin" />
-
+                    app:layout_constraintBottom_toBottomOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Search Bar -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="24dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editTextText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/light_black_bg"
                     android:drawableStart="@drawable/search_icon"
                     android:drawablePadding="8dp"
-                    android:ems="10"
                     android:hint="Search..."
                     android:inputType="text"
                     android:padding="8dp"
@@ -96,34 +97,31 @@
                         android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/settings" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </LinearLayout>
 
+            <!-- Banner -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/light_black_bg"
-
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:padding="8dp"
-                >
+                android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/imageView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/basket_banner"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                </ImageView>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -131,12 +129,10 @@
                     android:layout_height="wrap_content"
                     android:text="Sale off 30%"
                     android:textColor="@color/yellow"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView14"
-                    app:layout_constraintTop_toTopOf="parent">
-                </TextView>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -144,64 +140,51 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="casual"
                     android:paddingEnd="5dp"
-                    android:text="Enjoy your big offer \n       right now ?"
+                    android:text="Enjoy your big offer \n       right now?"
                     android:textColor="@color/white"
                     android:textStyle="bold|italic"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView14"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-                </TextView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="433dp"
-                android:layout_marginTop="8dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/Cartview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:clipToPadding="false"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/textView12"
                     app:layout_constraintBottom_toBottomOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Cartview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
         </LinearLayout>
     </ScrollView>
 
+    <!-- Footer -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/footer"
+        android:layout_marginBottom="10dp"
         android:background="@color/black3"
-        android:layout_marginBottom="10dp">
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/totalTxt"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="180dp"
+            android:layout_height="wrap_content"
             android:text="Total"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-         ></TextView>
-
-
-
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -221,9 +204,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -232,60 +213,49 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/btn_1" />
-
+                    app:srcCompat="@drawable/btn_1"/>
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
                     android:text="Explore"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
-                android:onClick="BtnCart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <ImageView
-
                     android:id="@+id/imageView6"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/btn_2" />
+                    app:srcCompat="@drawable/btn_2"/>
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
                     android:text="Cart"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:onClick="BtnWishList"
@@ -295,28 +265,25 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/btn_3" />
+                    app:srcCompat="@drawable/btn_3"/>
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
                     android:text="Wishlist"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
+                android:onClick="BtnMyorder"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView8"
@@ -325,7 +292,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/btn_4" />
+                    app:srcCompat="@drawable/btn_4"/>
 
                 <TextView
                     android:id="@+id/textView11"
@@ -335,18 +302,15 @@
                     android:text="My Order"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
-                android:onClick="BtnProfile"
+                android:onClick="BtnMyOrder"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView9"
@@ -355,7 +319,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/btn_5" />
+                    app:srcCompat="@drawable/btn_5"/>
 
                 <TextView
                     android:id="@+id/textView7"
@@ -365,12 +329,8 @@
                     android:text="Profile"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"/>
             </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
